@@ -1,0 +1,53 @@
+{% extends 'basic.html' %}
+{% block css %}
+#niv {
+font-family: Arial, Helvetica, sans-serif;
+border-collapse: collapse;
+width: 100%;
+}
+#niv th{
+color:white;
+}
+
+#niv td, #niv th {
+border: 1px solid #ddd;
+padding: 8px;
+}
+
+#niv tr:nth-child(even){background-color: #f2f2f2;}
+
+#niv tr:hover {background-color: #ddd;}
+
+{% endblock %}
+{% block body %}
+<form action="c">
+<div class="root">
+    <h3 style="text-align:center;">countries data about covid-19</h3>
+    <table id="niv">
+        <thead style="background-color:#3d3939">
+        <tr>
+            <th>Sno.</th>
+            <th>Country</th>
+            <th>Total Confirmed</th>
+            <th>Total Death</th>
+            <th>Total Recovered</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for c in countries %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{c.Country}}</td>
+            <td>{{c.TotalConfirmed}}</td>
+            <td>{{c.TotalDeaths}}</td>
+            <td>{{c.TotalRecovered}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</form>
+{% endblock %}
+{% block js %}
+
+{% endblock %}
